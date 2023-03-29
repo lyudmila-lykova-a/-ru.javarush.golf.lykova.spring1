@@ -15,6 +15,7 @@ public class MainWebApplicationInitializer implements WebApplicationInitializer 
     public void onStartup(final ServletContext sc) {
         AnnotationConfigWebApplicationContext root = new AnnotationConfigWebApplicationContext();
         root.scan("ru.javarush.golf.lykova.config");
+
         sc.addListener(new ContextLoaderListener(root));
 
         ServletRegistration.Dynamic appServlet =
