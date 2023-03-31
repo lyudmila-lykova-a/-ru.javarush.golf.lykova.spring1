@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>TO-DO</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Description</th>
+        <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${tasks.empty}">
+        <td colspan="2"> No Tasks Available </td>
+    </tr>
+    <tr th:each="task : ${tasks}">
+        <td><span th:text="${task.id}"></span></td>
+        <td><span th:text="${task.description}"></span></td>
+        <td><span th:text="${task.status}"></span></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -8,13 +8,13 @@ import ru.javarush.golf.lykova.entity.TaskEntity;
 import java.util.List;
 
 @Service
-public class DemoService {
+public class TaskService {
 
     @Autowired
     private TaskDao taskDao;
 
-    public List<TaskEntity> findAllTasks() {
-        return taskDao.findAll();
+    public List<TaskEntity> findAllTasks(int pageNumber) {
+        return taskDao.findAll(pageNumber - 1, 10);
     }
 
 }
