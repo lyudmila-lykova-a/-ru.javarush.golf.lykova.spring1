@@ -14,15 +14,46 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:if="${tasks.empty}">
-        <td colspan="2"> No Tasks Available </td>
+    <tr th:if="${taskPage.content.empty}">
+        <td colspan="2"> No Tasks Available</td>
     </tr>
-    <tr th:each="task : ${tasks}">
+    <tr th:each="task : ${taskPage.content}">
         <td><span th:text="${task.id}"></span></td>
         <td><span th:text="${task.description}"></span></td>
         <td><span th:text="${task.status}"></span></td>
+        <td>
+            <form th:action="@{/api/deleteTask}" th:method="post">
+                <input type="hidden" name="taskId" th:value="${task.id}">
+                <input type="submit" value="Delete">
+            </form>
+        </td>
     </tr>
     </tbody>
 </table>
+<div th:if="${taskPage.totalPages > 0}" class="pagination">
+<span th:each="pageNumber : ${pagesNumbers}">
+    <a th:href="@{/api/task(pageNumber=${pageNumber})}"
+       th:text=${pageNumber}
+       th:class="${pageNumber==taskPage.number + 1} ? active"></a>
+         </span>
+</div>
+<br>
+<div>
+    Add new task:
+    <form action="/api/task" method="post">
+        <div>
+            <label for="description">Description:</label>
+            <input type="text" name="description" id="description">
+        </div>
+        <div>
+            <label for="status">Status:</label>
+            <select id="status" name="status">
+                <option th:text="${status}" th:each="status : ${statusList}"></option>
+            </select>
+        </div>
+        <div><input type="submit" value="Save"></div>
+    </form>
+</div>
+
 </body>
 </html>
