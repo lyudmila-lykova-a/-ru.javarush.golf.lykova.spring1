@@ -22,7 +22,8 @@ public class TaskController {
 
     @GetMapping("task")
     public String tasksList(Model model,
-                            @RequestParam int pageNumber) {
+                            @RequestParam(required = false, defaultValue = "1") int pageNumber) {
+        pageNumber = pageNumber < 1 ? 1 : pageNumber;
         Page<TaskEntity> taskPage = taskService.findAllTasks(pageNumber);
         model.addAttribute("taskPage", taskPage);
         List<Integer> pagesNumbers = IntStream.range(1, taskPage.getTotalPages() + 1).boxed().toList();

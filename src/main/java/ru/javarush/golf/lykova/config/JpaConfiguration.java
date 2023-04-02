@@ -37,7 +37,7 @@ public class JpaConfiguration {
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.p6spy.engine.spy.P6SpyDriver");
-        dataSource.setUrl("jdbc:p6spy:mysql://localhost:3306/todo"); // TODO: 02.04.2023 change localhost to db
+        dataSource.setUrl("jdbc:p6spy:mysql://db:3306/todo");
         dataSource.setUsername("root");
         dataSource.setPassword("my-secret-pw");
         return dataSource;

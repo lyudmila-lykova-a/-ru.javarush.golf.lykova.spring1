@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    <link th:href="@{/static/css/main.css}" rel="stylesheet" />
+    <script type="text/javascript" th:src="@{/static/js/main.js}"></script>
     <meta charset="UTF-8">
     <title>TO-DO</title>
 </head>
 <body>
+<h1>TO DO LIST</h1>
+<br>
 <table>
     <thead>
     <tr>
-        <th>ID</th>
-        <th>Description</th>
-        <th>Status</th>
+        <th id="taskIdTitle">ID</th>
+        <th id="taskDescriptionTitle">Description</th>
+        <th id="taskStatusTitle">Status</th>
     </tr>
     </thead>
     <tbody>
@@ -44,31 +48,25 @@
 </div>
 <br>
 <div>
-    Task info:
+    <h3>Task info:</h3>
     <form action="/api/task" method="post">
         <div>
-            <label for="taskId">Id:</label>
-            <input type="text" name="id" id="taskId" readonly>
+            <label for="taskId">Id:</label><br>
+            <input type="text" name="id" id="taskId" class="taskInfoInput" readonly>
         </div>
         <div>
-            <label for="description">Description:</label>
-            <input type="text" name="description" id="description">
+            <label for="description">Description:</label><br>
+            <input type="text" name="description" id="description" class="taskInfoInput">
         </div>
         <div>
-            <label for="status">Status:</label>
-            <select id="status" name="status">
+            <label for="status">Status:</label><br>
+            <select id="status" name="status" class="taskInfoInput">
                 <option th:text="${status}" th:each="status : ${statusList}"></option>
             </select>
         </div>
         <div><input type="submit" value="Save"></div>
     </form>
 </div>
-<script>
-    function edit(id, description, status){
-        document.getElementById("taskId").value = id;
-        document.getElementById("description").value = description;
-        document.getElementById("status").value = status;
-    }
-</script>
+
 </body>
 </html>
