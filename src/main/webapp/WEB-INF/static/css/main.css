@@ -1,0 +1,28 @@
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid;
+}
+
+#taskIdTitle {
+    width: 30px;
+}
+
+#taskDescriptionTitle {
+    width: 300px;
+}
+
+#taskStatusTitle {
+    width: 150px;
+}
+
+a.active {
+    font-weight: bold;
+    color: blue;
+}
+
+.taskInfoInput {
+    width: 200px;
+}
