@@ -9,8 +9,6 @@ import org.springframework.stereotype.Component;
 import ru.javarush.golf.lykova.entity.TaskEntity;
 import ru.javarush.golf.lykova.repository.TaskRepository;
 
-import java.util.List;
-
 @Component
 public class TaskDao {
 

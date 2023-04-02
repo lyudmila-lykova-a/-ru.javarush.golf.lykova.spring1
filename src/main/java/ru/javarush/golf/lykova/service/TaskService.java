@@ -21,8 +21,9 @@ public class TaskService {
         return taskDao.findAll(pageNumber - 1, PAGE_SIZE);
     }
 
-    public void saveTask(String description, Status status) {
+    public void saveTask(Integer id, String description, Status status) {
         TaskEntity taskEntity = new TaskEntity();
+        taskEntity.setId(id);
         taskEntity.setDescription(description);
         taskEntity.setStatus(status);
         taskDao.saveTask(taskEntity);

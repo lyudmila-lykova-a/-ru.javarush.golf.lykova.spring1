@@ -1,5 +1,6 @@
 package ru.javarush.golf.lykova.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -32,9 +33,10 @@ public class TaskController {
 
     @PostMapping(value = "task", consumes = "application/x-www-form-urlencoded")
     public String saveTask(Model model,
+                           @RequestParam(required = false) Integer id,
                            @RequestParam String description,
                            @RequestParam Status status) {
-        taskService.saveTask(description, status);
+        taskService.saveTask(id, description, status);
         return tasksList(model, 1);
     }
 

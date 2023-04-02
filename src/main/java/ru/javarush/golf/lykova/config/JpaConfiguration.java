@@ -36,8 +36,8 @@ public class JpaConfiguration {
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/todo"); // TODO: 02.04.2023 change localhost to db
+        dataSource.setDriverClassName("com.p6spy.engine.spy.P6SpyDriver");
+        dataSource.setUrl("jdbc:p6spy:mysql://localhost:3306/todo"); // TODO: 02.04.2023 change localhost to db
         dataSource.setUsername("root");
         dataSource.setPassword("my-secret-pw");
         return dataSource;

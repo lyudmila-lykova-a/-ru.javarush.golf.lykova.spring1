@@ -22,6 +22,11 @@
         <td><span th:text="${task.description}"></span></td>
         <td><span th:text="${task.status}"></span></td>
         <td>
+            <button th:onclick="edit([[${task.id}]], [[${task.description}]], [[${task.status}]])">
+                Edit
+            </button>
+        </td>
+        <td>
             <form th:action="@{/api/deleteTask}" th:method="post">
                 <input type="hidden" name="taskId" th:value="${task.id}">
                 <input type="submit" value="Delete">
@@ -39,8 +44,12 @@
 </div>
 <br>
 <div>
-    Add new task:
+    Task info:
     <form action="/api/task" method="post">
+        <div>
+            <label for="taskId">Id:</label>
+            <input type="text" name="id" id="taskId" readonly>
+        </div>
         <div>
             <label for="description">Description:</label>
             <input type="text" name="description" id="description">
@@ -54,6 +63,12 @@
         <div><input type="submit" value="Save"></div>
     </form>
 </div>
-
+<script>
+    function edit(id, description, status){
+        document.getElementById("taskId").value = id;
+        document.getElementById("description").value = description;
+        document.getElementById("status").value = status;
+    }
+</script>
 </body>
 </html>
